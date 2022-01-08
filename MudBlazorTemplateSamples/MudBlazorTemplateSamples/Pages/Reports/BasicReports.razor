@@ -1,0 +1,26 @@
+﻿@page "/basicReports"
+
+<MudContainer>
+    <MudTabs Elevation="4" Rounded="true" Color="@Color.Primary">
+        <MudTabPanel Text="Bar Chart Report">
+            <MudPaper Class="m-3">
+                <BarChart />
+            </MudPaper>
+        </MudTabPanel>
+        <MudTabPanel Text="Line Chart Report">
+            <MudPaper Class="m-3">
+                <LineChart />
+            </MudPaper>
+        </MudTabPanel>
+        <MudTabPanel Text="Pie Chart Report">
+            <MudPaper Class="m-3">
+                <PieChart />
+            </MudPaper>
+        </MudTabPanel>
+        <MudTabPanel Text="Donut Chart Report">
+            <MudPaper Class="m-3">
+                <DonutChart />
+            </MudPaper>
+        </MudTabPanel>
+    </MudTabs>
+</MudContainer>
