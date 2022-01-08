@@ -4,12 +4,14 @@
 @using System.Text.RegularExpressions
 @using System.ComponentModel.DataAnnotations
 
-<MudText Typo="Typo.h5" Color="Color.Primary" Class="mb-4">Account</MudText>
+
+<MudText Typo="Typo.h5" Color="Color.Dark" Class="mb-4" Align="Align.Center">Account Page</MudText>
+
 <MudTabs Elevation="1" Rounded="true" PanelClass="mt-6">
     <MudTabPanel Text="General">
         <MudGrid>
             <MudItem xs="12" sm="4" md="3">
-                <MudCard >
+                <MudCard>
                     <MudCardHeader>
                         <CardHeaderContent>
                             <MudText>Public Profile</MudText>
@@ -18,12 +20,12 @@
                     <MudCardContent>
                         <div class="d-flex justify-center mb-4">
                             <MudAvatar Image="@AvatarImageLink" Style="height:100px; width:100px;">
-                                @if(AvatarImageLink == null)
+                                @if (AvatarImageLink == null)
                                 {
                                     <MudIcon Icon="@AvatarIcon" Size="Size.Large"></MudIcon>
                                 }
                             </MudAvatar>
-                                
+
                         </div>
                         <MudText Align="Align.Center">@FirstName @LastName</MudText>
                         <MudText Align="Align.Center">@JobTitle</MudText>
@@ -34,7 +36,7 @@
                 </MudCard>
             </MudItem>
             <MudItem xs="12" sm="8" md="9">
-                <MudCard >
+                <MudCard>
                     <MudCardHeader>
                         <CardHeaderContent>
                             <MudText>Profile Details</MudText>
@@ -150,10 +152,10 @@
     public string AvatarIcon { get; set; }
     public string AvatarButtonText { get; set; } = "Delete Picture";
     public Color AvatarButtonColor { get; set; } = Color.Error;
-    public string FirstName { get; set; } = "Jonny";
-    public string LastName { get; set; } = "Larsson";
-    public string JobTitle { get; set; } = "IT Consultant";
-    public string Email { get; set; } = "Youcanprobably@findout.com";
+    public string FirstName { get; set; } = "Mohammad Javad";
+    public string LastName { get; set; } = "Tabari";
+    public string JobTitle { get; set; } = "Developer";
+    public string Email { get; set; } = "mohammadJavadtabari1024@outlook.com";
     public bool FriendSwitch { get; set; } = true;
     public bool NotificationEmail_1 { get; set; } = true;
     public bool NotificationEmail_2 { get; set; }
@@ -166,7 +168,7 @@
 
     void DeletePicture()
     {
-        if(!String.IsNullOrEmpty(AvatarImageLink))
+        if (!String.IsNullOrEmpty(AvatarImageLink))
         {
             AvatarImageLink = null;
             AvatarIcon = Icons.Material.Outlined.SentimentVeryDissatisfied;
