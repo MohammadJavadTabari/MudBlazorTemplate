@@ -3,7 +3,7 @@
 <MudText Typo="Typo.h5" Color="Color.Primary" Class="mb-4">Dashboard</MudText>
 <MudGrid>
     <MudItem xs="12" sm="6" md="3">
-        <MudPaper  Class="d-flex flex-row pt-6 pb-4" Style="height:100px;">
+        <MudPaper Class="d-flex flex-row pt-6 pb-4" Style="height:100px;">
             <MudIcon Icon="@Icons.Material.Filled.Euro" Color="Color.Primary" Class="mx-4" Style="width:54px; height:54px;"></MudIcon>
             <div>
                 <MudText Typo="Typo.subtitle1" Class="mud-text-secondary mb-n1">Total Cost</MudText>
@@ -12,7 +12,7 @@
         </MudPaper>
     </MudItem>
     <MudItem xs="12" sm="6" md="3">
-        <MudPaper  Class="d-flex flex-row pt-6 pb-4" Style="height:100px;">
+        <MudPaper Class="d-flex flex-row pt-6 pb-4" Style="height:100px;">
             <MudIcon Icon="@Icons.Material.Filled.Layers" Color="Color.Secondary" Class="mx-4" Style="width:54px; height:54px;"></MudIcon>
             <div>
                 <MudText Typo="Typo.subtitle1" Class="mud-text-secondary mb-n1">Graphite on roof</MudText>
@@ -21,7 +21,7 @@
         </MudPaper>
     </MudItem>
     <MudItem xs="12" sm="6" md="3">
-        <MudPaper  Class="d-flex flex-row pt-6 pb-4" Style="height:100px;">
+        <MudPaper Class="d-flex flex-row pt-6 pb-4" Style="height:100px;">
             <MudIcon Icon="@Icons.Material.Filled.Public" Color="Color.Success" Class="mx-4" Style="width:54px; height:54px;"></MudIcon>
             <div>
                 <MudText Typo="Typo.subtitle1" Class="mud-text-secondary mb-n1">Global Spread</MudText>
@@ -30,7 +30,7 @@
         </MudPaper>
     </MudItem>
     <MudItem xs="12" sm="6" md="3">
-        <MudPaper  Class="d-flex flex-row pt-6 pb-4" Style="height:100px;">
+        <MudPaper Class="d-flex flex-row pt-6 pb-4" Style="height:100px;">
             <MudIcon Icon="@Icons.Custom.Uncategorized.Radioactive" Color="Color.Warning" Class="mx-4" Style="width:54px; height:54px;"></MudIcon>
             <div>
                 <MudText Typo="Typo.subtitle1" Class="mud-text-secondary mb-n1">Roentgen</MudText>
@@ -39,17 +39,45 @@
         </MudPaper>
     </MudItem>
     <MudItem xs="12" sm="8">
-        <MudPaper  Class="pa-4" Style="height:300px;">
-            Charts comming soon ish...
+        <MudPaper Class="pa-4">
+            <div class="row">
+                <div class="col-5">
+                    <MudText>name</MudText>
+                    <MudText>name</MudText>
+                </div>
+                <div class="col-5">
+                    <MudText>name</MudText>
+                    <MudText>name</MudText>
+                </div>
+                <div class="col-2">
+                    <MudAvatar >
+
+                    </MudAvatar>
+                </div>
+            </div>
+            <MudExpansionPanels>
+                <MudExpansionPanel Text="Click Here For More Detail" Icon="fas fa-chevron-circle-down">
+                    <div class="row">
+                        <div class="col-5">
+                            <MudText>name</MudText>
+                            <MudText>name</MudText>
+                        </div>
+                        <div class="col-5">
+                            <MudText>name</MudText>
+                            <MudText>name</MudText>
+                        </div>
+                    </div>
+                </MudExpansionPanel>
+            </MudExpansionPanels>
         </MudPaper>
     </MudItem>
     <MudItem xs="12" sm="4">
-        <MudPaper  Class="pa-4" Style="height:300px;">
+        <MudPaper Class="pa-4" Style="height:300px;">
             Charts comming soon ish...
         </MudPaper>
     </MudItem>
     <MudItem xs="12" sm="12" md="6">
-        <MudCard  Style="height:100%;">
+        <MudCard Style="height:100%;">
             <MudCardHeader>
                 <CardHeaderContent>
                     <MudText Typo="Typo.h6">Earning Report</MudText>
@@ -65,7 +93,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var report in earningReports.OrderBy(x=>x.Name))
+                        @foreach (var report in earningReports.OrderBy(x => x.Name))
                         {
                             <tr>
                                 <td>
@@ -87,7 +115,7 @@
         </MudCard>
     </MudItem>
     <MudItem xs="12" sm="12" md="6">
-        <MudCard  Style="height:100%;">
+        <MudCard Style="height:100%;">
             <MudCardHeader>
                 <CardHeaderContent>
                     <MudText Typo="Typo.h6">Recent incidents</MudText>
@@ -140,11 +168,11 @@
 @code {
 
     EarningReport[] earningReports = new EarningReport[]
-    {
+                {
         new EarningReport { Name = "Lunees", Title = "Reactor Engineer", Avatar = "https://avatars2.githubusercontent.com/u/71094850?s=460&u=66c16f5bb7d27dc751f6759a82a3a070c8c7fe4b&v=4", Salary = "$0.99", Severity = Color.Success, SeverityTitle = "Low"},
         new EarningReport { Name = "Mikes-gh", Title = "Developer", Avatar = "https://avatars.githubusercontent.com/u/16208742?s=120&v=4", Salary = "$19.12K", Severity = Color.Secondary, SeverityTitle = "Medium"},
         new EarningReport { Name = "Garderoben", Title = "CSS Magician", Avatar = "https://avatars2.githubusercontent.com/u/10367109?s=460&amp;u=2abf95f9e01132e8e2915def42895ffe99c5d2c6&amp;v=4", Salary = "$1337", Severity = Color.Primary, SeverityTitle = "High"},
-    };
+                };
 
     class EarningReport
     {

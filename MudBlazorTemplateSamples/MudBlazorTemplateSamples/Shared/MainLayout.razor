@@ -6,7 +6,7 @@
 <MudSnackbarProvider />
 
 <MudLayout>
-    <MudAppBar Elevation="25">
+    <MudAppBar Elevation="25" Color="Color.Dark">
         <MudHidden Breakpoint="Breakpoint.SmAndDown">
             <MudIcon Icon="fas fa-hand-holding-usd" Color="Color.Info" Size="Size.Large" />
         </MudHidden>
@@ -14,7 +14,7 @@
             <MudIconButton Icon="@Icons.Material.Outlined.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
         </MudHidden>
         <MudHidden Breakpoint="Breakpoint.Xs">
-            <MudText Typo="Typo.h6" Class="ml-4">MudBlazorTemplateSamples</MudText>
+            <MudText Typo="Typo.h6" Class="ml-4" Color="Color.Info">Illegible Blazor Sample Template</MudText>
         </MudHidden>
         <MudHidden Breakpoint="Breakpoint.Xs" Invert="true">
             <MudText Typo="Typo.subtitle2">MudBlazorTemplateSamples</MudText>
