@@ -4,55 +4,59 @@
 <MudThemeProvider Theme="_theme" />
 <MudDialogProvider />
 <MudSnackbarProvider />
+<MudRTLProvider RightToLeft="_rtl">
+    <MudLayout>
+        <MudAppBar Elevation="25" Color="Color.Dark">
+            <MudHidden Breakpoint="Breakpoint.SmAndDown">
+                <MudIcon Icon="fas fa-hand-holding-usd" Color="Color.Info" Size="Size.Large" />
+            </MudHidden>
+            <MudHidden Breakpoint="Breakpoint.MdAndUp">
+                <MudIconButton Icon="@Icons.Material.Outlined.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
+            </MudHidden>
+            <MudHidden Breakpoint="Breakpoint.Xs" >
+                <MudText Typo="Typo.h6" Class="m-4" Color="Color.Info">Illegible Blazor Sample Template</MudText>
+            </MudHidden>
+            <MudHidden Breakpoint="Breakpoint.Xs" Invert="true">
+                <MudText Typo="Typo.subtitle2">MudBlazorTemplateSamples</MudText>
+            </MudHidden>
+            <MudSpacer />
+            
+            <MudIconButton Icon="@RTLICon" OnClick="ChangeRTL"></MudIconButton>
+            <MudMenu Icon="@Icons.Material.Outlined.Translate" Color="Color.Inherit" Direction="Direction.Bottom" OffsetY="true" Dense="true">
+                <MudMenuItem>English</MudMenuItem>
+                <MudMenuItem>Swedish</MudMenuItem>
+                <MudMenuItem>Old Norse</MudMenuItem>
+            </MudMenu>
+            <MudMenu Direction="Direction.Left" OffsetX="true" Dense="true" Class="mt-1 ml-4">
+                <ActivatorContent>
+                    <MudAvatar Image="images/MohammadJavadTabari1024.jpeg" />
+                </ActivatorContent>
+                <ChildContent>
+                    <PersonCard Class="mt-n2" />
+                    <MudDivider Class="mb-2" />
+                    <MudListItem Text="Account" Icon="@Icons.Material.Outlined.Person" Href="/personal/account" />
+                    <MudListItem Text="Logout" Icon="@Icons.Material.Outlined.Login" Href="/pages/authentication/login" />
+                </ChildContent>
+            </MudMenu>
+        </MudAppBar>
+        <MudDrawer @bind-Open="_drawerOpen" Elevation="25" ClipMode="DrawerClipMode.Always">
+            <NavMenu />
+        </MudDrawer>
+        <MudMainContent>
+@*            <MudHidden Breakpoint="Breakpoint.SmAndDown">
+                <MudToolBar DisableGutters="true">
+                    <MudIconButton Icon="@Icons.Material.Outlined.Menu" Color="Color.Inherit" OnClick="@((e) => DrawerToggle())" Class="ml-3" />
+                    <MudBreadcrumbs Items="_items"></MudBreadcrumbs>
+                    <MudSpacer />
+                </MudToolBar>
+            </MudHidden>*@
+            <MudContainer MaxWidth="MaxWidth.False" Class="mt-4">
+                @Body
+            </MudContainer>
+        </MudMainContent>
+    </MudLayout>
 
-<MudLayout>
-    <MudAppBar Elevation="25" Color="Color.Dark">
-        <MudHidden Breakpoint="Breakpoint.SmAndDown">
-            <MudIcon Icon="fas fa-hand-holding-usd" Color="Color.Info" Size="Size.Large" />
-        </MudHidden>
-        <MudHidden Breakpoint="Breakpoint.MdAndUp">
-            <MudIconButton Icon="@Icons.Material.Outlined.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
-        </MudHidden>
-        <MudHidden Breakpoint="Breakpoint.Xs">
-            <MudText Typo="Typo.h6" Class="ml-4" Color="Color.Info">Illegible Blazor Sample Template</MudText>
-        </MudHidden>
-        <MudHidden Breakpoint="Breakpoint.Xs" Invert="true">
-            <MudText Typo="Typo.subtitle2">MudBlazorTemplateSamples</MudText>
-        </MudHidden>
-        <MudSpacer />
-        <MudMenu Icon="@Icons.Material.Outlined.Translate" Color="Color.Inherit" Direction="Direction.Bottom" OffsetY="true" Dense="true">
-            <MudMenuItem>English</MudMenuItem>
-            <MudMenuItem>Swedish</MudMenuItem>
-            <MudMenuItem>Old Norse</MudMenuItem>
-        </MudMenu>
-        <MudMenu Direction="Direction.Left" OffsetX="true" Dense="true" Class="mt-1 ml-4">
-            <ActivatorContent>
-                <MudAvatar Image="images/MohammadJavadTabari1024.jpeg" />
-            </ActivatorContent>
-            <ChildContent>
-                <PersonCard Class="mt-n2" />
-                <MudDivider Class="mb-2" />
-                <MudListItem Text="Account" Icon="@Icons.Material.Outlined.Person" Href="/personal/account" />
-                <MudListItem Text="Logout" Icon="@Icons.Material.Outlined.Login" Href="/pages/authentication/login" />
-            </ChildContent>
-        </MudMenu>
-    </MudAppBar>
-    <MudDrawer @bind-Open="_drawerOpen" Elevation="25" ClipMode="DrawerClipMode.Always">
-        <NavMenu />
-    </MudDrawer>
-    <MudMainContent>
-        <MudHidden Breakpoint="Breakpoint.SmAndDown">
-            <MudToolBar DisableGutters="true">
-                <MudIconButton Icon="@Icons.Material.Outlined.Menu" Color="Color.Inherit" OnClick="@((e) => DrawerToggle())" Class="ml-3" />
-                <MudBreadcrumbs Items="_items"></MudBreadcrumbs>
-                <MudSpacer />
-            </MudToolBar>
-        </MudHidden>
-        <MudContainer MaxWidth="MaxWidth.False" Class="mt-4">
-            @Body
-        </MudContainer>
-    </MudMainContent>
-</MudLayout>
+</MudRTLProvider>
 
 
 @code {
@@ -70,9 +74,23 @@
         StateHasChanged();
     }
 
-    private List<BreadcrumbItem> _items = new List<BreadcrumbItem>
+    //private List<BreadcrumbItem> _items = new List<BreadcrumbItem>
+    //{
+    //    new BreadcrumbItem("Personal", href: "#"),
+    //    new BreadcrumbItem("Dashboard", href: "#"),
+    //};
+    public bool _rtl = true;
+    public string RTLICon = "fas fa-angle-double-left";
+    void ChangeRTL()
     {
-        new BreadcrumbItem("Personal", href: "#"),
-        new BreadcrumbItem("Dashboard", href: "#"),
-    };
+        _rtl = !_rtl;
+        if (_rtl)
+        {
+            RTLICon = "fas fa-angle-double-left";
+        }
+        else
+        {
+            RTLICon = "fas fa-angle-double-right";
+        }
+    }
 }
