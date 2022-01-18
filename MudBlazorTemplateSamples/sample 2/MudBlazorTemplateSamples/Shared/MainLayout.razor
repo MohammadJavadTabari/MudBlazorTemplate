@@ -1,0 +1,239 @@
+﻿@inherits LayoutComponentBase
+
+<MudThemeProvider Theme="_currentTheme" />
+<MudDialogProvider />
+<MudSnackbarProvider />
+<MudRTLProvider RightToLeft="_rtl">
+    <MudLayout>
+        <MudAppBar Elevation="25" Color="Color.Dark">
+            <MudHidden Breakpoint="Breakpoint.SmAndDown">
+                <MudIcon Icon="fas fa-hand-holding-usd" Color="Color.Info" Size="Size.Large" />
+            </MudHidden>
+            <MudHidden Breakpoint="Breakpoint.MdAndUp">
+                <MudIconButton Icon="@Icons.Material.Outlined.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
+            </MudHidden>
+            <MudHidden Breakpoint="Breakpoint.Xs">
+                <MudText Typo="Typo.h6" Class="m-4" Color="Color.Info">Illegible Blazor Sample Template</MudText>
+            </MudHidden>
+            <MudHidden Breakpoint="Breakpoint.Xs" Invert="true">
+                <MudText Typo="Typo.subtitle2">MudBlazorTemplateSamples</MudText>
+            </MudHidden>
+            <MudSpacer />
+            <MudIconButton Icon="@RTLICon" OnClick="ChangeRTL" Color="Color.Error"></MudIconButton>
+            <MudIconButton Icon="@ModeIcon" OnClick="ChangeMode" Color="Color.Error"></MudIconButton>
+            <MudSpacer />
+            <MudTextField Class="m-2" AdornmentIcon="fas fa-search-dollar" T="string" Adornment="Adornment.End" Immediate="true" Variant="Variant.Filled" AdornmentColor="Color.Error" />
+            <MudSpacer />
+            <MudMenu Icon="@Icons.Material.Outlined.Translate" Color="Color.Inherit" Direction="Direction.Bottom" OffsetY="true" Dense="true">
+                <MudMenuItem>English</MudMenuItem>
+                <MudMenuItem>Swedish</MudMenuItem>
+                <MudMenuItem>Old Norse</MudMenuItem>
+            </MudMenu>
+            <MudMenu Direction="Direction.Left" OffsetX="true" Dense="true" Class="mt-1 ml-4">
+                <ActivatorContent>
+                    <MudAvatar Image="images/MohammadJavadTabari1024.jpeg" />
+                </ActivatorContent>
+                <ChildContent>
+                    <PersonCard Class="mt-n2" />
+                    <MudDivider Class="mb-2" />
+                    <MudListItem Text="Account" Icon="@Icons.Material.Outlined.Person" Href="/personal/account" />
+                    <MudListItem Text="Logout" Icon="@Icons.Material.Outlined.Login" Href="/pages/authentication/login" />
+                </ChildContent>
+            </MudMenu>
+        </MudAppBar>
+        <MudDrawer @bind-Open="_drawerOpen" Elevation="25" ClipMode="DrawerClipMode.Always">
+            <NavMenu />
+        </MudDrawer>
+        <MudMainContent>
+
+            <MudContainer MaxWidth="MaxWidth.False" Class="mt-4">
+                @Body
+            </MudContainer>
+        </MudMainContent>
+    </MudLayout>
+
+</MudRTLProvider>
+
+
+@code {
+
+    private static MudTheme _defTheme = new MudTheme()
+        {
+            Palette = new Palette()
+            {
+                Primary = Colors.Blue.Darken1,
+                Secondary = Colors.DeepPurple.Accent2,
+                Background = Colors.Grey.Lighten5,
+                AppbarBackground = Colors.Blue.Darken1,
+                DrawerBackground = "#FFF",
+                DrawerText = "rgba(0,0,0, 0.7)",
+                Success = "#06d79c"
+            },
+
+            LayoutProperties = new LayoutProperties()
+            {
+                DefaultBorderRadius = "6px",
+            },
+
+            Typography = new Typography()
+            {
+                Default = new Default()
+                {
+                    FontFamily = new[] { "Montserrat", "Helvetica", "Arial", "sans-serif" },
+                    FontSize = ".875rem",
+                    FontWeight = 400,
+                    LineHeight = 1.43,
+                    LetterSpacing = ".01071em"
+                },
+                H1 = new H1()
+                {
+                    FontFamily = new[] { "Montserrat", "Helvetica", "Arial", "sans-serif" },
+                    FontSize = "6rem",
+                    FontWeight = 300,
+                    LineHeight = 1.167,
+                    LetterSpacing = "-.01562em"
+                },
+                H2 = new H2()
+                {
+                    FontFamily = new[] { "Montserrat", "Helvetica", "Arial", "sans-serif" },
+                    FontSize = "3.75rem",
+                    FontWeight = 300,
+                    LineHeight = 1.2,
+                    LetterSpacing = "-.00833em"
+                },
+                H3 = new H3()
+                {
+                    FontFamily = new[] { "Montserrat", "Helvetica", "Arial", "sans-serif" },
+                    FontSize = "3rem",
+                    FontWeight = 400,
+                    LineHeight = 1.167,
+                    LetterSpacing = "0"
+                },
+                H4 = new H4()
+                {
+                    FontFamily = new[] { "Montserrat", "Helvetica", "Arial", "sans-serif" },
+                    FontSize = "2.125rem",
+                    FontWeight = 400,
+                    LineHeight = 1.235,
+                    LetterSpacing = ".00735em"
+                },
+                H5 = new H5()
+                {
+                    FontFamily = new[] { "Montserrat", "Helvetica", "Arial", "sans-serif" },
+                    FontSize = "1.5rem",
+                    FontWeight = 400,
+                    LineHeight = 1.334,
+                    LetterSpacing = "0"
+                },
+                H6 = new H6()
+                {
+                    FontFamily = new[] { "Montserrat", "Helvetica", "Arial", "sans-serif" },
+                    FontSize = "1.25rem",
+                    FontWeight = 400,
+                    LineHeight = 1.6,
+                    LetterSpacing = ".0075em"
+                },
+                Button = new Button()
+                {
+                    FontFamily = new[] { "Montserrat", "Helvetica", "Arial", "sans-serif" },
+                    FontSize = ".875rem",
+                    FontWeight = 500,
+                    LineHeight = 1.75,
+                    LetterSpacing = ".02857em"
+                },
+                Body1 = new Body1()
+                {
+                    FontFamily = new[] { "Montserrat", "Helvetica", "Arial", "sans-serif" },
+                    FontSize = "1rem",
+                    FontWeight = 400,
+                    LineHeight = 1.5,
+                    LetterSpacing = ".00938em"
+                },
+                Body2 = new Body2()
+                {
+                    FontFamily = new[] { "Montserrat", "Helvetica", "Arial", "sans-serif" },
+                    FontSize = ".875rem",
+                    FontWeight = 400,
+                    LineHeight = 1.43,
+                    LetterSpacing = ".01071em"
+                },
+                Caption = new Caption()
+                {
+                    FontFamily = new[] { "Montserrat", "Helvetica", "Arial", "sans-serif" },
+                    FontSize = ".75rem",
+                    FontWeight = 400,
+                    LineHeight = 1.66,
+                    LetterSpacing = ".03333em"
+                },
+                Subtitle2 = new Subtitle2()
+                {
+                    FontFamily = new[] { "Montserrat", "Helvetica", "Arial", "sans-serif" },
+                    FontSize = ".875rem",
+                    FontWeight = 500,
+                    LineHeight = 1.57,
+                    LetterSpacing = ".00714em"
+                }
+            },
+            Shadows = new Shadow(),
+            ZIndex = new ZIndex(),
+        };
+    private MudTheme _currentTheme = _defTheme;
+    public bool _drawerOpen = true;
+
+    void DrawerToggle()
+    {
+        _drawerOpen = !_drawerOpen;
+    }
+
+    protected override void OnInitialized()
+    {
+        StateHasChanged();
+    }
+
+    public bool _rtl = true;
+    public string RTLICon = "fas fa-angle-double-left";
+    void ChangeRTL()
+    {
+        _rtl = !_rtl;
+        if (_rtl)
+        {
+            RTLICon = "fas fa-angle-double-left";
+        }
+        else
+        {
+            RTLICon = "fas fa-angle-double-right";
+        }
+    }
+    public bool isDark = false;
+    public string ModeIcon = "far fa-moon";
+    void ChangeMode()
+    {
+        isDark = !isDark;
+        if (isDark)
+        {
+            ModeIcon = "far fa-sun";
+            _currentTheme = new MudTheme
+                {
+                    Palette = new Palette()
+                    {
+                        Black = "#27272f",
+                        Background = "#32333d",
+                        BackgroundGrey = "#27272f",
+                        Surface = "#373740",
+                        TextPrimary = "#ffffffb3",
+                        TextSecondary = "rgba(255,255,255, 0.50)",
+                        AppbarBackground = "#27272f",
+                        AppbarText = "#ffffffb3",
+                        DrawerBackground = "#27272f",
+                        DrawerText = "#ffffffb3",
+                        DrawerIcon = "#ffffffb3"
+                    }
+                };
+        }
+        else
+        {
+            _currentTheme = _defTheme;
+            ModeIcon = "far fa-moon";
+        }
+    }
+}
